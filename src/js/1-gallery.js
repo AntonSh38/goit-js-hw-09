@@ -1,3 +1,6 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 const images = [
   {
     preview:
@@ -75,7 +78,7 @@ function createMarcup(arr) {
           <img
             class="gallery-image"
             src="${element.preview}"
-            alt="" title="${element.description}"
+            alt="${element.description}"
           />
         </a>
       </li>`;
@@ -85,9 +88,7 @@ function createMarcup(arr) {
 
 galleryMarcup.innerHTML = createMarcup(images);
 
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
-
 new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
   captionDelay: 250,
 });
