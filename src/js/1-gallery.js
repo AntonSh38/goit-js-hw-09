@@ -65,7 +65,6 @@ const images = [
 ];
 
 const galleryMarcup = document.querySelector('.gallery');
-galleryMarcup.addEventListener('click', onGalleryMarcup);
 
 function createMarcup(arr) {
   return arr
@@ -76,7 +75,7 @@ function createMarcup(arr) {
           <img
             class="gallery-image"
             src="${element.preview}"
-            alt="${element.description}"
+            alt="" title="${element.description}"
           />
         </a>
       </li>`;
@@ -86,14 +85,9 @@ function createMarcup(arr) {
 
 galleryMarcup.innerHTML = createMarcup(images);
 
-function onGalleryMarcup(event) {
-  event.preventDefault();
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
-  if (event.target.nodeName !== 'IMG') return;
-
-  const instance = basicLightbox.create(`
-    <img src="${event.target.dataset.source}" width="800" height="600">
-`);
-
-  instance.show();
-}
+new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
+});
